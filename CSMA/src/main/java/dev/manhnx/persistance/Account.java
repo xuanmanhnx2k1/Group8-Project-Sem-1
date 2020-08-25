@@ -13,6 +13,13 @@ public class Account {
     private String phoneNumber;
     private Date birthDate;
     private int accStatus;
+    public int gender;
+    public void setGender(int gender){
+        this.gender = gender;
+    }
+    public int setGender(){
+        return gender;
+    }
     public void setFullName(String fullName){
         this.fullName = fullName;
     }

@@ -60,12 +60,10 @@ public class App {
         sc.close();
         return cafe;
     }
-    private static void showAllAccount(){
-        System.out.println("Account list:");
-        List<Account> lst = new AccountBL().getAllAccount();
-        for(Account account : lst){
-            System.out.println(account);
-        }
+    private static void showAllAccount() throws SQLException {
+        AccountBL abl = new AccountBL();
+        abl.getAllAccount();
+        
     }
 
 

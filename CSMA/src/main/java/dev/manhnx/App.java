@@ -60,11 +60,25 @@ public class App {
         sc.close();
         return cafe;
     }
-    private static void showAllAccount() throws SQLException {
-        AccountBL abl = new AccountBL();
-        abl.getAllAccount();
+    // private static void showAllAccount() throws SQLException {
+    //     AccountBL abl = new AccountBL();
+    //     abl.getAllAccount();
+        
+    // }
+    private static void showAllAccount() {
+        System.out.println("Account list:");
+        List<Account> lst = new AccountBL().getAllAccount();
+        try {
+            for (Account account : lst) {
+                System.out.println(account);
+            }
+        } catch (Exception e) {
+            System.out.println("erroe" +e);
+        }
         
     }
+    
+    
 
 
 }

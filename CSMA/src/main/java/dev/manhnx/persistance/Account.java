@@ -82,5 +82,9 @@ public class Account {
     public String getEmail() {
         return email;
     }
+    @Override
+    public String toString() {
+        return this.accId + " - " + this.fullName + " - " + this.phoneNumber + " - " + this.address + " - " + this.gender + " - " + this.birthDate + " - "+ this.email + " - " + this.userName + " - " + this.password + " - " + this.position + " - " + this.accStatus;
+    }
     
 }

@@ -58,6 +58,9 @@ public class AccountDAL {
 
     //     return account;
     }
+    public void insertAccount(){
+        String sql = "INSERT INTO `coffeeshop`.`account` (`Acc_Id`, `Full_Name`, `Gender`, `Address`, `Phone_Number`, `Email`, `Birth_Date`, `Acc_Status`, `Position`, `User_Name`, `User_Password`) VALUES ('1', 'Nguyễn Xuân Mạnh', '1', '282 Lĩnh Nam', '0966853865', 'manhnx.nde19078@vtc.edu.vn', '2001/10/01', '1', '1', 'admin', '123456');"
+    }
     // public int insertAccount(Account account){
     //     int re
     // }

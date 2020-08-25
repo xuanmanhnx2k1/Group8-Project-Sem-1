@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.cj.protocol.Resultset;
+import com.mysql.cj.xdevapi.Result;
 
 import dev.manhnx.persistance.Account;
 
@@ -26,6 +28,43 @@ public class AccountDAL {
             System.out.println("error"+e);
         }
         return lst;
+    }
+    public boolean updateAcc(Account account) throws SQLException {
+        try {
+            String sql = "update Account set User_Password = ? where Acc_Id = ?";
+        Connection con = ConnectionDB.getConnection();
+        PreparedStatement pstm = con.prepareStatement(sql);
+        pstm.setString(1, account.getPassword());
+        pstm.setInt(2, account.getAccId());
+        pstm.executeUpdate() ;
+        } catch (Exception e) {
+            
+        }
+        return false;
+        
+    }
+    public boolean insertAccount(Account account){
+        try {
+            String sql = "INSERT INTO `coffeeshop`.`account` (`Acc_Id`, `Full_Name`, `Gender`, `Address`, `Phone_Number`, `Email`, `Birth_Date`, `Acc_Status`, `Position`, `User_Name`, `User_Password`) VALUES ('?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?')";
+            Connection con = ConnectionDB.getConnection();
+            PreparedStatement pstm = con.prepareStatement(sql);
+            pstm.setInt(1, account.getAccId());
+            pstm.setString(2, account.getFullName());
+            pstm.setInt(3, account.getGender());
+            pstm.setString(4, account.getAddress());
+            pstm.setString(5, account.getPhonNumber());
+            pstm.setString(6, account.getEmail());
+            pstm.setDate(7, account.getBirthDate());
+            pstm.setInt(8, account.getAccStatus());
+            pstm.setInt(9, account.getPosition());
+            pstm.setString(10, account.getUserName());
+            pstm.setString(11, account.getPassword());
+            pstm.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("errer"+e);
+        }
+        return false;
+
     }
     // public static void getAll()throws SQLException{
     // String sql = "select*from Account";

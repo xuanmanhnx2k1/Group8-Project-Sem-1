@@ -11,13 +11,17 @@ public class AccountBL {
     public List<Account> getAllAccount(){
         return dal.getAll();
     }
+    public boolean changePass(Account account) throws SQLException {
+        return dal.updateAcc(account);
+
+    }
 
     // public void getAllAccount() throws SQLException {
     //      AccountDAL.getAll();
     // }
-    // public boolean addAccount(Account accoount){
-    //     return dal.insertAccount(accoount);
-    // }
+    public boolean createAccount(Account accoount){
+        return dal.insertAccount(accoount);
+    }
     
     
 }

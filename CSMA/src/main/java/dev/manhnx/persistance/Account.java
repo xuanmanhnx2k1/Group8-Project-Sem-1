@@ -17,8 +17,8 @@ public class Account {
     public void setGender(int gender){
         this.gender = gender;
     }
-    public int setGender(){
-        return gender;
+    public int getGender(){
+        return gender = gender;
     }
     public void setFullName(String fullName){
         this.fullName = fullName;
@@ -86,5 +86,8 @@ public class Account {
     public String toString() {
         return this.accId + " - " + this.fullName + " - " + this.phoneNumber + " - " + this.address + " - " + this.gender + " - " + this.birthDate + " - "+ this.email + " - " + this.userName + " - " + this.password + " - " + this.position + " - " + this.accStatus;
     }
+	public void setBirthDate(String nextLine) {
+	}
+	
     
 }

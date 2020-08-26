@@ -28,11 +28,11 @@ public class CafeDAL {
 
     private Cafe getCafe(ResultSet rs) throws SQLException {
         Cafe cafe = new Cafe();
-        cafe.setCafeId(rs.getInt("Cafe_Id:"));
-        cafe.setCafeName(rs.getString("Cafe_Name:"));
-        cafe.setCafePrice(rs.getDouble("Cafe_Price:"));
-        cafe.setCafeStatus(rs.getInt("Cafe_Status:"));
-        cafe.setAmount(rs.getInt("Amount:"));
+        cafe.setCafeId(rs.getInt("Cafe_Id"));
+        cafe.setCafeName(rs.getString("Cafe_Name"));
+        cafe.setCafePrice(rs.getDouble("Cafe_Price"));
+        cafe.setCafeAvailable(rs.getInt("Cafe_Available"));
+        cafe.setCafeStatus(rs.getInt("Cafe_Status"));
         return cafe;
     }
 
@@ -48,8 +48,8 @@ public class CafeDAL {
                 
             }
         } catch (Exception e) {
-            lst = null;
-            //TODO: handle exception
+            
+            System.out.println("erroe"+e );
         }
 		return lst;
 	}

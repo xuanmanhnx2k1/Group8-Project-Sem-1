@@ -19,8 +19,8 @@ public class AccountDAL {
         List<Account> lst = new ArrayList<Account>();
         try {
             Connection con = ConnectionDB.getConnection();
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(sql);
+            PreparedStatement pstm = con.prepareStatement(sql);
+            ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 lst.add(getAccount(rs));
             }
@@ -54,7 +54,7 @@ public class AccountDAL {
             pstm.setString(4, account.getAddress());
             pstm.setString(5, account.getPhonNumber());
             pstm.setString(6, account.getEmail());
-            pstm.setDate(7, account.getBirthDate());
+            pstm.setString(7, account.getBirthDate());
             pstm.setInt(8, account.getAccStatus());
             pstm.setInt(9, account.getPosition());
             pstm.setString(10, account.getUserName());
@@ -106,7 +106,7 @@ public class AccountDAL {
         account.setEmail(rs.getString("Email"));
         account.setPosition(rs.getInt("Position"));
         account.setAddress(rs.getString("Address"));
-        account.setBirthDate(rs.getDate("Birth_Date"));
+        account.setBirthDate(rs.getString("Birth_Date"));
         account.setFullName(rs.getString("Full_Name"));
         account.setPhoneNumber(rs.getString("Phone_Number"));
         account.setGender(rs.getInt("Gender"));

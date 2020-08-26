@@ -9,7 +9,7 @@ import dev.manhnx.persistance.Cafe;
 public class CafeBL {
     private CafeDAL cafeDAL = new CafeDAL();
 
-    public List<Cafe> getALL() {
+    public List<Cafe> getALLCafe() {
         return cafeDAL.getALL();
     }
 

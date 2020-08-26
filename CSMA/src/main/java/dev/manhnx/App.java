@@ -19,10 +19,10 @@ public class App {
             // insertCafe();
             // insertCafe();
 
-            // showAllCafe();
+            showAllCafe();
             // showAllAccount();
             // update();
-            insertAcc();
+            // insertAcc();
 
 
                 
@@ -34,12 +34,32 @@ public class App {
     
     public static void showAllCafe(){
         CafeBL cbl = new CafeBL();
-        System.out.println("Cafe list:");
-        List<Cafe> lst = cbl.getALL();
-        for(Cafe cafe : lst){
-            System.out.println(cafe);
-        }
+        List<Cafe> lst = cbl.getALLCafe();
+        try {
+ 
+            System.out.println("===========================================================================================================");;
+            System.out.println("Group-08");
+            System.out.println("===========================================================================================================");
+            System.out.println("Cafe list");
+            System.out.println("===========================================================================================================");
+            System.out.printf("| %-6s | %-20s | %-10s | %-15s | %-12s | \n", "CafeId", "Cafename", "Price", "Available", "Status"); 
+            System.out.println("===========================================================================================================");
+            try {
+                for (Cafe cafe : lst) {
+                    System.out.printf(
+                        "| %-6s | %-20s | %-10s | %-15s | %-12s | \n",
+                        cafe.getCafeId(), cafe.getCafeName(), cafe.getCafePrice(), cafe.getCafeAvailable(), cafe.getCafeStatus());
+                    
+                }
+            } catch (Exception e) {
+                System.out.println("erroor"+ e);
+            }
+    } catch (Exception e) {
+        System.out.println("erroe" +e);
     }
+}
+        
+    
     public static void insertCafe(){
         CafeBL cbl = new CafeBL();
         System.out.println("Insert new Cafe:");
@@ -127,17 +147,22 @@ public class App {
         
     // }
     private static void showAllAccount() {
-        System.out.println("Account list:");
+        AccountBL abl = new AccountBL();
         List<Account> lst = new AccountBL().getAllAccount();
         try {
+ 
+                System.out.println("================================================================================================================================================================================================");;
+                System.out.println("Group-08");
+                System.out.println("================================================================================================================================================================================================");
+                System.out.println("Account list");
+                System.out.println("================================================================================================================================================================================================");
+                System.out.printf("| %-5s | %-20s | %-6s | %-30s | %-11s | %-30s | %-20s | %-6s | %-10s | %-10s | %-10s | \n", "AccId", "Fullname", "Gender", "Address", "Phone", "Email", "Birthdate", "Status", "Position", "Username", "Userpassword"); 
+                System.out.println("================================================================================================================================================================================================");
             for (Account account : lst) {
-                // System.out.println("===================================================================================================");
-                // System.out.println("Group-08");
-                // System.out.println("===================================================================================================");
-                // System.out.println("Account list");
-                // System.out.println("===================================================================================================");
-                // System.out.println("| %-5d | %-10d | %-10d | %-10d | %-10d | %-10d | %-10d | %-10d | %-10d | %-10d |", );
-                System.out.println(account);
+                System.out.printf(
+                    "| %-5s | %-20s | %-6s | %-30s | %-11s | %-30s | %-20s | %-6s | %-10s | %-10s | %-10s |  \n",
+                    account.getAccId(), account.getFullName(), account.getGender(), account.getAddress(), account.getPhonNumber(), account.getEmail(), account.getBirthDate(), account.getAccStatus(), account.getPosition(), account.getUserName(), account.getPassword());
+                
             }
         } catch (Exception e) {
             System.out.println("erroe" +e);

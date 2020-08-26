@@ -11,7 +11,7 @@ public class Account {
     private String fullName;
     private String address;
     private String phoneNumber;
-    private Date birthDate;
+    private String birthDate;
     private int accStatus;
     public int gender;
     public void setGender(int gender){
@@ -38,10 +38,10 @@ public class Account {
     public String getPhonNumber(){
         return phoneNumber;
     } 
-    public void setBirthDate(Date birthDate){
+    public void setBirthDate(String birthDate){
         this.birthDate = birthDate;
     }
-    public Date getBirthDate(){
+    public String getBirthDate(){
         return birthDate = birthDate;
     }
     public void setAccStatus(int accStatus){
@@ -82,12 +82,12 @@ public class Account {
     public String getEmail() {
         return email;
     }
-    @Override
-    public String toString() {
-        return this.accId + " - " + this.fullName + " - " + this.phoneNumber + " - " + this.address + " - " + this.gender + " - " + this.birthDate + " - "+ this.email + " - " + this.userName + " - " + this.password + " - " + this.position + " - " + this.accStatus;
-    }
-	public void setBirthDate(String nextLine) {
-	}
+    // @Override
+    // public String toString() {
+    //     return this.accId + " - " + this.fullName + " - " + this.phoneNumber + " - " + this.address + " - " + this.gender + " - " + this.birthDate + " - "+ this.email + " - " + this.userName + " - " + this.password + " - " + this.position + " - " + this.accStatus;
+    // }
+	// public void setBirthDate(String nextLine) {
+	// }
 	
     
 }

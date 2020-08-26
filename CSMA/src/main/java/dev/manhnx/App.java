@@ -17,13 +17,12 @@ public class App {
             Connection con = ConnectionDB.getConnection();
             System.out.println("connect to mysql server");
             // insertCafe();
-            // insertCafe();
 
-            showAllCafe();
-            // showAllAccount();
+            // showAllCafe();
+        //    AccountBL.showAllAccount();
             // update();
-            // insertAcc();
-
+            insertAcc();
+            
 
                 
             
@@ -32,53 +31,32 @@ public class App {
         }
     }
     
-    public static void showAllCafe(){
-        CafeBL cbl = new CafeBL();
-        List<Cafe> lst = cbl.getALLCafe();
-        try {
- 
-            System.out.println("===========================================================================================================");;
-            System.out.println("Group-08");
-            System.out.println("===========================================================================================================");
-            System.out.println("Cafe list");
-            System.out.println("===========================================================================================================");
-            System.out.printf("| %-6s | %-20s | %-10s | %-15s | %-12s | \n", "CafeId", "Cafename", "Price", "Available", "Status"); 
-            System.out.println("===========================================================================================================");
-            try {
-                for (Cafe cafe : lst) {
-                    System.out.printf(
-                        "| %-6s | %-20s | %-10s | %-15s | %-12s | \n",
-                        cafe.getCafeId(), cafe.getCafeName(), cafe.getCafePrice(), cafe.getCafeAvailable(), cafe.getCafeStatus());
-                    
-                }
-            } catch (Exception e) {
-                System.out.println("erroor"+ e);
-            }
-    } catch (Exception e) {
-        System.out.println("erroe" +e);
-    }
-}
+    
+
+    
+    
         
     
     public static void insertCafe(){
         CafeBL cbl = new CafeBL();
         System.out.println("Insert new Cafe:");
-         if (cbl.addCafe(inputCafe())) {
-                System.out.println("Insert complete");
-             
-         }else{
-             System.out.println("Insert failed");
+         try {
+            cbl.addCafe(inputCafe());
+         } catch (Exception e) {
+             System.out.println("error"+e);
          }
     }
     public static Cafe inputCafe() {
         Cafe cafe = new Cafe();
         Scanner sc = new Scanner(System.in);
+        System.out.print("Cafe Id: ");
+        cafe.setCafeId(sc.nextInt());
         System.out.print("Cafe Name: ");
         cafe.setCafeName(sc.nextLine());
-        System.out.print("Cafe Price:");
+        System.out.print("Cafe Price:"); 
         cafe.setCafePrice(sc.nextDouble());
-        System.out.print("Amount: ");
-        cafe.setAmount(sc.nextInt());
+        System.out.print("Available: : ");
+        cafe.setCafeAvailable(sc.nextInt());
         sc.close();
         return cafe;
     }
@@ -87,36 +65,36 @@ public class App {
             AccountBL abl = new AccountBL();
             abl.createAccount(inputAcc());
         } catch (Exception e) {
-            //TODO: handle exception
+           System.out.println("error"+e);
         }
 
     }
     public static Account inputAcc(){
         Account account = new Account();
-        Scanner sc = new Scanner(System.in);
+        
         System.out.print("Acc_Id: ");
-        account.setAccId(sc.nextInt());
+        account.setAccId(InputInt());
         System.out.print("Full_Name: ");
-        account.setFullName(sc.nextLine());
+        account.setFullName(InputString());
         System.out.print("Gender: ");
-        account.setGender(sc.nextInt());
+        account.setGender(InputInt());
         System.out.print("Address: ");
-        account.setAddress(sc.nextLine());
+        account.setAddress(InputString());
         System.out.print("Phone_Number: ");
-        account.setPhoneNumber(sc.nextLine());
+        account.setPhoneNumber(InputString());
         System.out.print("Email: ");
-        account.setEmail(sc.nextLine());
+        account.setEmail(InputString());
         System.out.print("Birth_Date: ");
-        account.setBirthDate(sc.nextLine());
+        account.setBirthDate(InputString());
         System.out.print("Acc_Status: ");
-        account.setAccStatus(sc.nextInt());
+        account.setAccStatus(InputInt());
         System.out.print("Position: ");
-        account.setPosition(sc.nextInt());
+        account.setPosition(InputInt());
         System.out.print("User_Name: ");
-        account.setUserName(sc.nextLine());
+        account.setUserName(InputString());
         System.out.print("User_Password: ");
-        account.setPassword(sc.nextLine());
-
+        account.setPassword(InputString());
+        
         return account;
 
     }
@@ -146,30 +124,27 @@ public class App {
     //     abl.getAllAccount();
         
     // }
-    private static void showAllAccount() {
-        AccountBL abl = new AccountBL();
-        List<Account> lst = new AccountBL().getAllAccount();
-        try {
- 
-                System.out.println("================================================================================================================================================================================================");;
-                System.out.println("Group-08");
-                System.out.println("================================================================================================================================================================================================");
-                System.out.println("Account list");
-                System.out.println("================================================================================================================================================================================================");
-                System.out.printf("| %-5s | %-20s | %-6s | %-30s | %-11s | %-30s | %-20s | %-6s | %-10s | %-10s | %-10s | \n", "AccId", "Fullname", "Gender", "Address", "Phone", "Email", "Birthdate", "Status", "Position", "Username", "Userpassword"); 
-                System.out.println("================================================================================================================================================================================================");
-            for (Account account : lst) {
-                System.out.printf(
-                    "| %-5s | %-20s | %-6s | %-30s | %-11s | %-30s | %-20s | %-6s | %-10s | %-10s | %-10s |  \n",
-                    account.getAccId(), account.getFullName(), account.getGender(), account.getAddress(), account.getPhonNumber(), account.getEmail(), account.getBirthDate(), account.getAccStatus(), account.getPosition(), account.getUserName(), account.getPassword());
-                
-            }
-        } catch (Exception e) {
-            System.out.println("erroe" +e);
-        }
-        
+   
+    public static String InputString() {
+        Scanner scanner = new Scanner(System.in);
+        String x;
+        return x = scanner.nextLine();
+
     }
-    
+
+    public static int InputInt() {
+        Scanner scanner = new Scanner(System.in);
+        int y = scanner.nextInt();
+        return y;
+
+    }
+
+    public static Double InputDouble() {
+        Scanner scanner = new Scanner(System.in);
+        double z = scanner.nextDouble();
+        return z;
+
+    }
     
 
 

@@ -45,7 +45,7 @@ public class AccountDAL {
     }
     public boolean insertAccount(Account account){
         try {
-            String sql = "INSERT INTO `coffeeshop`.`account` (`Acc_Id`, `Full_Name`, `Gender`, `Address`, `Phone_Number`, `Email`, `Birth_Date`, `Acc_Status`, `Position`, `User_Name`, `User_Password`) VALUES ('?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?')";
+            String sql = "INSERT INTO Account VALUES (?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?)";
             Connection con = ConnectionDB.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setInt(1, account.getAccId());

@@ -18,8 +18,11 @@ public class CafeBL {
     }
 
     public Cafe getbyId(int cafeId) throws SQLException {
-        return cafeDAL.getbyId(cafeId);
+        return cafeDAL.getId(cafeId);
     }
+
+	public void getbyId(Cafe id) {
+	}
 	
 
 	

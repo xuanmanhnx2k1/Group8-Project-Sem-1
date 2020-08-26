@@ -10,7 +10,7 @@ import java.util.List;
 import dev.manhnx.persistance.Cafe;
 
 public class CafeDAL {
-    public Cafe getbyId(int cafeId) throws SQLException {
+    public Cafe getId(int cafeId) throws SQLException {
         Cafe cafe = null;
         try(Connection con = ConnectionDB.getConnection()){
             PreparedStatement pstm = con.prepareStatement("select*from Cafe where Cafe_Id =?;");

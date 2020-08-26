@@ -13,8 +13,8 @@ public class Cafe {
     public int getAmount(){
         return amount;
     }
-    public void setCafeId(int i){
-        this.cafeId = i;
+    public void setCafeId(int cafeId){
+        this.cafeId = cafeId;
     }
     public int getCafeId(){
         return cafeId;
@@ -43,4 +43,8 @@ public class Cafe {
     public int getCafeAvailable(){
         return cafeAvailable;
     }
+    // @Override
+    // public String toString() {
+    //     return cafeId + " - " + cafeName + " - " + cafePrice + " - " + cafeStatus;
+    // }
 }

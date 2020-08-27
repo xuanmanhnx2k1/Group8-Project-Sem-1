@@ -24,6 +24,7 @@ public class Menu {
         System.out.println("|1. Insert Cafe             |");
         System.out.println("|2. Update Cafe             |");
         System.out.println("|3. View Cafe               |");
+        System.out.println("|4. Search Cafe             |");
         System.out.println("=============================");
     }
     

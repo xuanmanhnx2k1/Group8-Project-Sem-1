@@ -17,7 +17,9 @@ public class AccountBL {
         return dal.updateAcc(account);
 
     }
-
+    public int login_check(String username, String password) {
+        return dal.check_account(username, password);
+    }
     // public void getAllAccount() throws SQLException {
     //      AccountDAL.getAll();
     // }
@@ -136,6 +138,9 @@ public class AccountBL {
         return z;
 
     }
+    public int login(String username, String password) {
+		return 0;
+	}
     
     
 }

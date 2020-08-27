@@ -14,7 +14,8 @@ public class CafeDAL {
         // Cafe cafe = new Cafe();
         List<Cafe> lid = new ArrayList<>();
         try (Connection con = ConnectionDB.getConnection()) {
-            PreparedStatement pstm = con.prepareStatement("select*from Cafe where Cafe_Id =" + id + ";");
+            // PreparedStatement pstm = con.prepareStatement("select*from Cafe where Cafe_Id =" + id + ";");
+            PreparedStatement pstm = con.prepareStatement("select*from Cafe where Cafe_Id = ?;");
             // pstm.setInt(1, cafe.getCafeId());
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
@@ -35,11 +36,7 @@ public class CafeDAL {
         cafeid.setCafeStatus(rs.getInt("Cafe_Status"));
         return cafeid;
     }
-    public static Cafe getCafeId(ResultSet rs) throws SQLException {
-        Cafe cafe = new Cafe();
-        cafe.setCafeId(rs.getInt("Cafe_Id"));
-        return cafe;
-    }
+    
 
     private Cafe getCafe(ResultSet rs) throws SQLException {
         Cafe cafe = new Cafe();

@@ -1,6 +1,7 @@
 package dev.manhnx.dal;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -113,6 +114,47 @@ public class AccountDAL {
         account.setAccStatus(rs.getInt("Acc_Status"));
 
         return account;
+    }
+    public int check_account(String username, String password) {
+
+        String position = null;
+        int id = -1;
+        try {
+            // String strconn = "jdbc:mysql://localhost:3306/coffeeshop?user=root&password=123456789";
+            // Connection conn = DriverManager.getConnection(strconn);
+            Connection conn = ConnectionDB.getConnection();
+            Statement start = conn.createStatement();
+            ResultSet rs = start.executeQuery(
+                    "SELECT Acc_Id,User_Name FROM coffeeshop.account where User_Name = '" + username + "';");
+            while (rs.next()) {
+                if (username.equals(rs.getString("User_Name"))) {
+                    id = rs.getInt("Acc_Id");
+                } else {
+                    id = -1;
+                }
+    
+            }
+            if (id == -1) {
+    
+                return id = -1;
+            } else {
+    
+                rs = start
+                        .executeQuery("SELECT User_Password FROM coffeeshop.account where Acc_Id = '" + id + "';");
+                while (rs.next()) {
+                    if (password.equals(rs.getString("User_Password"))) {
+                        return id;
+                    } else {
+                        return id = -1;
+                    }
+                }
+            }
+    
+        } catch (SQLException e) {
+            System.out.println("Co loi say ra!");
+            System.out.println(e);
+        }
+        return id;
     }
 }
 

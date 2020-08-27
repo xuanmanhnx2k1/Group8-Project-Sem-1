@@ -18,9 +18,9 @@ public class CafeBL {
         return cafeDAL.insertCafe(cafe);
     }
 
-    public Cafe getbyId(int cafeId) throws SQLException {
-        return cafeDAL.getId(cafeId);
-    }
+    // public List<Cafe> getbyId() {
+    //     return cafeDAL.getId();
+    // }
 
 	
 	public static void insertCafe() {
@@ -44,6 +44,35 @@ public class CafeBL {
         System.out.print("Available: : ");
         cafe.setCafeAvailable(InputInt());
         return cafe;
+    }
+    public static void showCafeById() {
+
+        CafeBL cbl = new CafeBL();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter id: ");
+        int id = Integer.parseInt(sc.nextLine());
+        List<Cafe> lst = CafeDAL.getId(id);
+        try {
+ 
+                System.out.println("================================================================================================================================================================================================");;
+                System.out.println("Group-08");
+                System.out.println("================================================================================================================================================================================================");
+                System.out.println("Cafe list");
+                System.out.println("================================================================================================================================================================================================");
+                System.out.printf("| %-6s | %-10s | %-10s | %-15s | %-11s | \n", "CafeId", "Cafe Name", "Cafe Price", "Cafe Available", "Cafe Status"); 
+                System.out.println("================================================================================================================================================================================================");
+            for (Cafe cafe : lst) {
+                System.out.printf(
+                    "| %-6s | %-10s | %-10s | %-15s | %-11s | \n",
+                    cafe.getCafeId(), cafe.getCafeName(), cafe.getCafePrice(), cafe.getCafeAvailable(), cafe.getCafeStatus());
+                System.out.println("=================================================================================================================================================================================================");
+
+            }
+            sc.nextLine();
+        } catch (Exception e) {
+            System.out.println("erroe" +e);
+        }
+        
     }
     public static String InputString() {
         Scanner scanner = new Scanner(System.in);

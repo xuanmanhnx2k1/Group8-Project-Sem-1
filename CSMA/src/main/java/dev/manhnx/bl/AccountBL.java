@@ -26,6 +26,7 @@ public class AccountBL {
     }
     public static void showAllAccount() {
         AccountBL abl = new AccountBL();
+        Scanner sc = new Scanner(System.in);
         List<Account> lst = new AccountBL().getAllAccount();
         try {
  
@@ -34,23 +35,27 @@ public class AccountBL {
                 System.out.println("================================================================================================================================================================================================");
                 System.out.println("Account list");
                 System.out.println("================================================================================================================================================================================================");
-                System.out.printf("| %-5s | %-20s | %-6s | %-30s | %-11s | %-30s | %-20s | %-6s | %-10s | %-10s | %-10s | \n", "AccId", "Fullname", "Gender", "Address", "Phone", "Email", "Birthdate", "Status", "Position", "Username", "Userpassword"); 
+                System.out.printf("| %-5s | %-20s | %-6s | %-30s | %-11s | %-30s | %-20s | %-6s | %-10s | %-10s | %-10s | \n", "AccId", "Fullname", "Gender", "Address", "Phone", "Email", "Birthdate", "Status", "Position", "Username", "Password"); 
                 System.out.println("================================================================================================================================================================================================");
             for (Account account : lst) {
                 System.out.printf(
                     "| %-5s | %-20s | %-6s | %-30s | %-11s | %-30s | %-20s | %-6s | %-10s | %-10s | %-10s |  \n",
                     account.getAccId(), account.getFullName(), account.getGender(), account.getAddress(), account.getPhonNumber(), account.getEmail(), account.getBirthDate(), account.getAccStatus(), account.getPosition(), account.getUserName(), account.getPassword());
                 System.out.println("=================================================================================================================================================================================================");
+
             }
+            sc.nextLine();
         } catch (Exception e) {
             System.out.println("erroe" +e);
         }
         
     }
     public static void insertAcc(){
+        Scanner sc = new Scanner(System.in);
         try {
             AccountBL abl = new AccountBL();
             abl.createAccount(inputAcc());
+            sc.nextLine();
         } catch (Exception e) {
            System.out.println("error"+e);
         }
@@ -81,18 +86,25 @@ public class AccountBL {
         account.setUserName(InputString());
         System.out.print("User_Password: ");
         account.setPassword(InputString());
-        
         return account;
 
     }
     public static void update() throws SQLException {
         AccountBL abl = new AccountBL();
-       try {
-        abl.changePass(inputInfo());
+        Scanner sc = new Scanner(System.in);
+       if ( abl.changePass(inputInfo())) {
         System.out.println("update complete");
-       } catch (Exception e) {
-           System.out.println("error"+e);
+           
        }
+       else{
+        System.out.println("error");
+       }
+       
+        
+
+       
+       sc.nextLine();
+
     }
     public static Account inputInfo(){
         Account account = new Account();
@@ -101,7 +113,6 @@ public class AccountBL {
         account.setPassword(sc.nextLine());
         System.out.print("Acc_Id: ");
         account.setAccId(sc.nextInt());
-        
         sc.close();
         return account;
     }

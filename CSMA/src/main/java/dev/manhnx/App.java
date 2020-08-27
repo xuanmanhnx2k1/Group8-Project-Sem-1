@@ -19,26 +19,27 @@ public class App {
             String choice;
             Scanner sc = new Scanner(System.in);
             while (true) {
-                // Menu.MenuAcc();
-                // System.out.println("Enter the selection");
-                // choice = sc.nextLine();
-                // switch (choice) {
-                //     case "0":
-                //         System.exit(0);
-                //     case "1":
-                //         AccountBL.insertAcc();
-                //         break;
-                //     case "2":
-                //         AccountBL.update();
-                //         break;
-                //     case "3":
-                //         AccountBL.showAllAccount();
-                //         break;
+            //     Menu.MenuAcc();
+            //     System.out.println("Enter the selection");
+            //     choice = sc.nextLine();
+            //     switch (choice) {
+            //         case "0":
+            //             System.exit(0);
+            //         case "1":
+            //             AccountBL.insertAcc();
+            //             break;
+            //         case "2":
+            //             AccountBL.update();
+            //             break;
+            //         case "3":
+            //             AccountBL.showAllAccount();
+            //             break;
 
-                //     default:
-                //     System.out.println("Syntax error");
-                //         break;
-                // }
+            //         default:
+            //         System.out.println("Syntax error");
+            //             break;
+            //     }
+            // }
                 Menu.MenuCafe();
                 System.out.println("Enter the selection");
                 choice = sc.nextLine();
@@ -49,10 +50,10 @@ public class App {
                         CafeBL.insertCafe();
                         break;
                     case "2":
-                        CafeBL.
+                        CafeBL.showCafeById();
                         break;
                     case "3":
-                        AccountBL.showAllAccount();
+                        
                         break;
 
                     default:
@@ -74,4 +75,5 @@ public class App {
 
     // }
 
-}
+    
+    }

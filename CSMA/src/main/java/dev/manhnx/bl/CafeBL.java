@@ -23,10 +23,15 @@ public class CafeBL {
     // }
 
     public static void insertCafe() {
+        Scanner sc = new Scanner(System.in);
         CafeBL cbl = new CafeBL();
         System.out.println("Insert new Cafe:");
         try {
             cbl.addCafe(inputCafe());
+            System.out.println("Insert complete");
+            System.out.println("Press enter to back!");
+            sc.nextLine();
+            
         } catch (Exception e) {
             System.out.println("error" + e);
         }
@@ -42,39 +47,38 @@ public class CafeBL {
         cafe.setCafePrice(InputDouble());
         System.out.print("Available: : ");
         cafe.setCafeAvailable(InputInt());
+        System.out.println("Cafe Status: ");
+        cafe.setCafeStatus(InputInt());
         return cafe;
     }
 
     public static void updateCafe() {
         // AccountBL abl = new AccountBL();
         Scanner sc = new Scanner(System.in);
-        if (cafeDAL.updateCafe(inputInfo())) {
+        try {
+            cafeDAL.updateCafe(inputCafeInfo());
             System.out.println("update complete");
-
-        } else {
-            System.out.println("error");
+        } catch (Exception e) {
+            System.out.println("error"+e);
         }
-
+        System.out.println("Press enter to back!");
         sc.nextLine();
 
     }
 
-    public static Cafe inputInfo() {
+    public static Cafe inputCafeInfo() {
         Cafe cafe = new Cafe();
-        Scanner sc = new Scanner(System.in);
         System.out.print("Cafe_Id: ");
-        cafe.setCafeId(sc.nextInt());
-        System.out.print("New Cafe_Id: ");
-        cafe.setCafeId(sc.nextInt());
+        cafe.setCafeId(InputInt());
         System.out.print("New Cafe_Name: ");
-        cafe.setCafeName(sc.nextLine());
+        cafe.setCafeName(InputString());
         System.out.print("New Cafe_Price: ");
-        cafe.setCafeAvailable(sc.nextInt());
+        cafe.setCafeAvailable(InputInt());
         System.out.print("New Cafe_Available: ");
-        cafe.setCafeAvailable(sc.nextInt());
+        cafe.setCafeAvailable(InputInt());
         System.out.print("New Cafe_Status: ");
-        cafe.setCafeStatus(sc.nextInt());
-        sc.close();
+        cafe.setCafeStatus(InputInt());
+        
         return cafe;
     }
 
@@ -102,6 +106,7 @@ public class CafeBL {
 
 
             }
+            System.out.println("Press enter to back");
             sc.nextLine();
         } catch (Exception e) {
             System.out.println("erroe" + e);
@@ -129,6 +134,7 @@ public class CafeBL {
                 System.out.println("|==============================================================================|");
 
             }
+            System.out.println("Press enter to back!");
             sc.nextLine();
         } catch (Exception e) {
             System.out.println("erroe" + e);

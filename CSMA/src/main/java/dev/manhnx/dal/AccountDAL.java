@@ -49,7 +49,7 @@ public class AccountDAL {
         return account;
     }
 
-    public boolean updateAcc(Account account) {
+    public int updateAcc(Account account) {
         try {
             String sql = "update Account set User_Password = ? where Acc_Id = ?";
             Connection con = ConnectionDB.getConnection();
@@ -60,7 +60,7 @@ public class AccountDAL {
         } catch (Exception e) {
 
         }
-        return false;
+        return 0;
 
     }
 

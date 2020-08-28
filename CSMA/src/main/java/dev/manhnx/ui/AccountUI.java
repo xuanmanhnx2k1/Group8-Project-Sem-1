@@ -71,10 +71,11 @@ public class AccountUI {
                                             CafeBL.updateCafe();
                                             break;
                                             case "3":
-                                            CafeBL.showAllCafe();;
+                                            CafeBL.showAllCafe();
                                             break;
                                             case "4":
                                             CafeBL.showCafeById();
+                                            break;
                                             case "0":
                                             System.exit(0);
                                         }

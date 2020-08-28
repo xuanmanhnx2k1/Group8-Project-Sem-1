@@ -8,7 +8,7 @@ import dev.manhnx.dal.CafeDAL;
 import dev.manhnx.persistance.Cafe;
 
 public class CafeBL {
-    private CafeDAL cafeDAL = new CafeDAL();
+    private static CafeDAL cafeDAL = new CafeDAL();
 
     public List<Cafe> getALLCafe() {
         return cafeDAL.getALL();
@@ -19,11 +19,10 @@ public class CafeBL {
     }
 
     // public List<Cafe> getbyId() {
-    //     return cafeDAL.getId();
+    // return cafeDAL.getId();
     // }
 
-	
-	public static void insertCafe() {
+    public static void insertCafe() {
         CafeBL cbl = new CafeBL();
         System.out.println("Insert new Cafe:");
         try {
@@ -45,6 +44,40 @@ public class CafeBL {
         cafe.setCafeAvailable(InputInt());
         return cafe;
     }
+
+    public static void updateCafe() {
+        // AccountBL abl = new AccountBL();
+        Scanner sc = new Scanner(System.in);
+        if (cafeDAL.updateCafe(inputInfo())) {
+            System.out.println("update complete");
+
+        } else {
+            System.out.println("error");
+        }
+
+        sc.nextLine();
+
+    }
+
+    public static Cafe inputInfo() {
+        Cafe cafe = new Cafe();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Cafe_Id: ");
+        cafe.setCafeId(sc.nextInt());
+        System.out.print("New Cafe_Id: ");
+        cafe.setCafeId(sc.nextInt());
+        System.out.print("New Cafe_Name: ");
+        cafe.setCafeName(sc.nextLine());
+        System.out.print("New Cafe_Price: ");
+        cafe.setCafeAvailable(sc.nextInt());
+        System.out.print("New Cafe_Available: ");
+        cafe.setCafeAvailable(sc.nextInt());
+        System.out.print("New Cafe_Status: ");
+        cafe.setCafeStatus(sc.nextInt());
+        sc.close();
+        return cafe;
+    }
+
     public static void showCafeById() {
 
         CafeBL cbl = new CafeBL();
@@ -53,27 +86,56 @@ public class CafeBL {
         int id = Integer.parseInt(sc.nextLine());
         List<Cafe> lst = CafeDAL.getId(id);
         try {
- 
-                System.out.println("================================================================================================================================================================================================");;
-                System.out.println("Group-08");
-                System.out.println("================================================================================================================================================================================================");
-                System.out.println("Cafe list");
-                System.out.println("================================================================================================================================================================================================");
-                System.out.printf("| %-6s | %-10s | %-10s | %-15s | %-11s | \n", "CafeId", "Cafe Name", "Cafe Price", "Cafe Available", "Cafe Status"); 
-                System.out.println("================================================================================================================================================================================================");
+
+            System.out.println("|==============================================================================|");
+            System.out.println("|                            [CSMA] Group-08                                   |");
+            System.out.println("|==============================================================================|");
+            System.out.println("|                                Cafe list                                     |");
+            System.out.println("|==============================================================================|");
+            System.out.printf("| %-7s | %-20s | %-10s | %-15s | %-12s | \n", "Cafe Id", "Cafe Name", "Cafe Price",
+                    "Cafe Available", "Cafe Status");
+            System.out.println("|==============================================================================|");
             for (Cafe cafe : lst) {
-                System.out.printf(
-                    "| %-6s | %-10s | %-10s | %-15s | %-11s | \n",
-                    cafe.getCafeId(), cafe.getCafeName(), cafe.getCafePrice(), cafe.getCafeAvailable(), cafe.getCafeStatus());
-                System.out.println("=================================================================================================================================================================================================");
+                System.out.printf("| %-7s | %-20s | %-10s | %-15s | %-12s | \n", cafe.getCafeId(), cafe.getCafeName(),
+                        cafe.getCafePrice(), cafe.getCafeAvailable(), cafe.getCafeStatus());
+                System.out.println("|==============================================================================|");
+
 
             }
             sc.nextLine();
         } catch (Exception e) {
-            System.out.println("erroe" +e);
+            System.out.println("erroe" + e);
         }
-        
+
     }
+
+    public static void showAllCafe() {
+        CafeBL cbl = new CafeBL();
+        Scanner sc = new Scanner(System.in);
+        List<Cafe> lst = new CafeDAL().getALL();
+        try {
+
+            System.out.println("|==============================================================================|");
+            System.out.println("|                            [CSMA] Group-08                                   |");
+            System.out.println("|==============================================================================|");
+            System.out.println("|                                Cafe list                                     |");
+            System.out.println("|==============================================================================|");
+            System.out.printf("| %-7s | %-20s | %-10s | %-15s | %-12s | \n", "Cafe Id", "Cafe Name", "Cafe Price",
+                    "Cafe Available", "Cafe Status");
+            System.out.println("|==============================================================================|");
+            for (Cafe cafe : lst) {
+                System.out.printf("| %-7s | %-20s | %-10s | %-15s | %-12s | \n", cafe.getCafeId(), cafe.getCafeName(),
+                        cafe.getCafePrice(), cafe.getCafeAvailable(), cafe.getCafeStatus());
+                System.out.println("|==============================================================================|");
+
+            }
+            sc.nextLine();
+        } catch (Exception e) {
+            System.out.println("erroe" + e);
+        }
+
+    }
+
     public static String InputString() {
         Scanner scanner = new Scanner(System.in);
         String x;
@@ -95,5 +157,4 @@ public class CafeBL {
 
     }
 
-	
 }

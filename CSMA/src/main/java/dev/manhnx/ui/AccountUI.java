@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Scanner;
 import dev.manhnx.ui.*;
 import dev.manhnx.bl.AccountBL;
+import dev.manhnx.bl.CafeBL;
+import dev.manhnx.bl.OrderBL;
 import dev.manhnx.dal.AccountDAL;
 
 public class AccountUI {
@@ -29,15 +31,81 @@ public class AccountUI {
                         switch (chose) {
                             case "1":
                             cls();
-                            // AccountBL.showAccountById(id);
-                            // AccountBL.inputInfoUpdateById(id);
-                            break;
+                            while (true) {
+                            Menu.MenuAcc();
+                            System.out.print("Enter the selection: ");
+                            chose = sc.nextLine();
+                            if (chose.equals("0") == true) {
+                                break;
+                            }else{
+                                switch (chose){
+                                    case "1":
+                                    AccountBL.insertAcc();
+                                    break;
+                                    case "2":
+                                    AccountBL.update();
+                                    break;
+                                    case "3":
+                                    AccountBL.showAllAccount();
+                                    break;
+                                    case "0":
+                                    System.exit(0);
+                                }
+                            }
+                                
+                            }
                             case "2":
                                 cls();
+                                while (true) {
+                                    Menu.MenuCafe();;
+                                    System.out.print("Enter the selection: ");
+                                    chose = sc.nextLine();
+                                    if (chose.equals("0") == true) {
+                                        break;
+                                    }else{
+                                        switch (chose){
+                                            case "1":
+                                            CafeBL.insertCafe();
+                                            break;
+                                            case "2":
+                                            CafeBL.updateCafe();
+                                            break;
+                                            case "3":
+                                            CafeBL.showAllCafe();;
+                                            break;
+                                            case "4":
+                                            CafeBL.showCafeById();
+                                            case "0":
+                                            System.exit(0);
+                                        }
+                                    }
+                                        
+                                    }
                             // manage_staff_menu();
                                 break;
                             case "3":
                                 cls();
+                                while (true) {
+                                    Menu.MenuOrder();
+                                    System.out.print("Enter the selection: ");
+                                    chose = sc.nextLine();
+                                    if (chose.equals("0") == true) {
+                                        break;
+                                    }else{
+                                        switch (chose){
+                                            case "1":
+                                            OrderBL.showCafeById();
+                                            break;
+                                            case "2":
+                                            
+                                            break;
+                                            case "0":
+                                            System.exit(0);
+                                            
+                                        }
+                                    }
+                                        
+                                    }
                                 // productsUI.admin_products_menu();
                                 break;
                             case "5":

@@ -9,15 +9,39 @@ public class Order {
     private int OrderId;
     private int AccId;
     private int CafeId;
+    private String CafeName;
+    private int Amount;
+    private Double Price;
     private int OrderStatus;
     private Date OrderDate;
-    private List<Cafe> cafes;
-    public Order(){
-        OrderId = 0;
-        OrderStatus = CREATE_NEW_ORDER_STATUS;
-        cafes = new ArrayList<>();
+    // private List<Cafe> cafes;
+    // public Order(){
+    //     OrderId = 0;
+    //     OrderStatus = CREATE_NEW_ORDER_STATUS;
+    //     cafes = new ArrayList<>();
         
 
+    // }
+    public void setCafeName(String CafeName) {
+        this.CafeName = CafeName;
+    }
+
+    public String getCafeName() {
+        return CafeName;
+    }
+    public void setAmount(int Amount) {
+        this.Amount = Amount;
+    }
+
+    public int getAmount() {
+        return Amount;
+    }
+    public void setPrice(Double Price) {
+        this.Price = Price;
+    }
+
+    public Double getPrice() {
+        return Price;
     }
     public void setOrderId(int orderId) {
         this.OrderId = orderId;
@@ -54,15 +78,15 @@ public class Order {
     public int setCafeId(){
         return CafeId;
     }
-    public List<Cafe> getCafe(){
-        return cafes;
-    }
-    public void addCafe(Cafe cafe){
-        if (cafes ==null) {
-            cafes = new ArrayList<>();
-        } 
-        cafes.add(cafe);
-    }
+    // public List<Cafe> getCafe(){
+    //     return cafes;
+    // }
+    // public void addCafe(Cafe cafe){
+    //     if (cafes ==null) {
+    //         cafes = new ArrayList<>();
+    //     } 
+    //     cafes.add(cafe);
+    // }
 
 
    

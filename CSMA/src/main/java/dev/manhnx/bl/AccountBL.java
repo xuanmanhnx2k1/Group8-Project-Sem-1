@@ -15,10 +15,10 @@ public class AccountBL {
         return dal.getAll();
     }
 
-    public boolean changePass(Account account) throws SQLException {
-        return dal.updateAcc(account);
+    // public boolean changePass(Account account) throws SQLException {
+    // return dal.updateAcc(account);
 
-    }
+    // }
 
     public int login_check(String username, String password) {
         return dal.check_account(username, password);
@@ -77,13 +77,14 @@ public class AccountBL {
             dal.insertAccount(inputAcc());
             sc.nextLine();
         } catch (Exception e) {
-           System.out.println("error"+e);
+            System.out.println("error" + e);
         }
 
     }
-    public static Account inputAcc(){
+
+    public static Account inputAcc() {
         Account account = new Account();
-        
+
         System.out.print("Acc_Id: ");
         account.setAccId(InputInt());
         System.out.print("Full_Name: ");
@@ -109,24 +110,22 @@ public class AccountBL {
         return account;
 
     }
-    public static void update() throws SQLException {
-        AccountBL abl = new AccountBL();
-        Scanner sc = new Scanner(System.in);
-       if ( abl.changePass(inputInfo())) {
-        System.out.println("update complete");
-           
-       }
-       else{
-        System.out.println("error");
-       }
-       
-        
 
-       
-       sc.nextLine();
+    public static void update() {
+        // AccountBL abl = new AccountBL();
+        Scanner sc = new Scanner(System.in);
+        if (dal.updateAcc(inputInfo())) {
+            System.out.println("update complete");
+
+        } else {
+            System.out.println("error");
+        }
+
+        sc.nextLine();
 
     }
-    public static Account inputInfo(){
+
+    public static Account inputInfo() {
         Account account = new Account();
         Scanner sc = new Scanner(System.in);
         System.out.print("New_Password: ");
@@ -136,6 +135,7 @@ public class AccountBL {
         sc.close();
         return account;
     }
+
     public static String InputString() {
         Scanner scanner = new Scanner(System.in);
         String x;
@@ -156,9 +156,9 @@ public class AccountBL {
         return z;
 
     }
+
     public int login(String username, String password) {
-		return 0;
-	}
-    
-    
+        return 0;
+    }
+
 }

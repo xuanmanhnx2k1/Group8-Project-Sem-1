@@ -71,6 +71,7 @@ public class CafeDAL {
             Connection con = ConnectionDB.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setInt(1, cafe.getCafeId());
+            
             pstm.setString(2, cafe.getCafeName());
             pstm.setDouble(3, cafe.getCafePrice());
             pstm.setInt(4, cafe.getCafeAvailable());
